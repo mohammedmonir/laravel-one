@@ -61,6 +61,9 @@ return [
     'en' =>'english',
     'open' =>'open',
     'countries' =>'countries',
+    'create_countries' =>'create countries',
+    'country_name_en' =>' contry name en ',
+    'country_name_ar' =>' country name ar ',
     
     
     

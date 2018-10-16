@@ -96,6 +96,9 @@ class AdminController extends Controller
             $data['password']=bcrypt(request('password'));
         }
         Admin::where('id',$id)->update($data);
+        session()->flash('success',trans('admin.updated'));
+        return redirect('admin/admin');
+
     }
     
     /**

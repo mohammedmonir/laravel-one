@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 14 أكتوبر 2018 الساعة 21:25
+-- Generation Time: 17 أكتوبر 2018 الساعة 01:06
 -- إصدار الخادم: 10.1.31-MariaDB
 -- PHP Version: 7.1.16
 
@@ -232,6 +232,23 @@ INSERT INTO `admins` (`id`, `username`, `email`, `password`, `remember_token`, `
 -- --------------------------------------------------------
 
 --
+-- بنية الجدول `countries`
+--
+
+CREATE TABLE `countries` (
+  `id` int(11) NOT NULL,
+  `country_name_ar` varchar(255) NOT NULL,
+  `country_name_en` varchar(255) NOT NULL,
+  `mob` varchar(255) NOT NULL,
+  `code` varchar(255) NOT NULL,
+  `logo` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- بنية الجدول `files`
 --
 
@@ -301,7 +318,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `sitename_ar`, `sitename_en`, `logo`, `icon`, `email`, `main_lang`, `description`, `keywords`, `status`, `message_maintenance`, `created_at`, `updated_at`) VALUES
-(1, 'كابيتال مول\r\n', 'store', 'settings/o2BH6yhtE3A4vduFTAy8cOZE1GSTJdi08WKsJXE9.jpeg', 'settings/70BIfhoxT9UoWlsB36CN4dXDCZ5IOnZfHYOd9XoB.jpeg', 'd@htomail.com3', 'ar', 'hello hello hello hello hello hello', 'hello hello hello hello', 'close', 'hello hello hello hello hello', '2018-10-01 13:18:56', '2018-10-12 20:07:16');
+(1, 'كابيتال مول', 'store', 'settings/o2BH6yhtE3A4vduFTAy8cOZE1GSTJdi08WKsJXE9.jpeg', 'settings/KuUYibWU7h7dZhLnoY22ecjbhcnBCsZDZLosxIQ5.jpeg', 'd@htomail.com3', 'ar', 'hello hello hello hello hello hello', 'hello hello hello hello', 'open', 'الموقع مغلق للاسف', '2018-10-01 13:18:56', '2018-10-14 22:46:47');
 
 -- --------------------------------------------------------
 
@@ -337,6 +354,12 @@ ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `countries`
+--
+ALTER TABLE `countries`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `files`
 --
 ALTER TABLE `files`
@@ -369,6 +392,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `admins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
+
+--
+-- AUTO_INCREMENT for table `countries`
+--
+ALTER TABLE `countries`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `files`

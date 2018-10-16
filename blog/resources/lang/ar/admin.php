@@ -60,6 +60,9 @@ return [
     'en' =>'انجلش',
     'open' =>'فتح',
     'countries' =>'الدول',
+    'create_countries' =>'اضافة دولة جديدة',
+    'country_name_en' =>' اسم الدولة بالانجلش',
+    'country_name_ar' =>' اسم الدولة بالعربي ',
     
 ];
 

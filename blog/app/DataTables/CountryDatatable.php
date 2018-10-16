@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\User;
+use App\Model\Country;
 
 use Yajra\DataTables\Services\DataTable;
 
-class UsersDatatable extends DataTable
+class CountryDatatable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,10 +18,10 @@ class UsersDatatable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-            ->addColumn('checkbox', 'admin.countries.btn.checkbox')
-            ->addColumn('edit', 'admin.countries.btn.edit')
-            ->addColumn('delete', 'admin.countries.btn.delete')
-            ->addColumn('level', 'admin.countries.btn.level')
+            ->addColumn('checkbox', 'admin.users.btn.checkbox')
+            ->addColumn('edit', 'admin.users.btn.edit')
+            ->addColumn('delete', 'admin.users.btn.delete')
+            ->addColumn('level', 'admin.users.btn.level')
             ->rawColumns([
                 'edit',
                 'delete',
@@ -36,14 +36,9 @@ class UsersDatatable extends DataTable
      * @param \App\User $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(User $model)
+    public function query()
     {
-        return User::query()->where(function($q){
-            if(request()->has('level')){
-                return $q->where('level',request('level'));
-            }
-
-        });
+        return Country::query();
     }
     
 
@@ -143,20 +138,16 @@ class UsersDatatable extends DataTable
                 'title' => trans('admin.id'),
                 ],
                 [ 
-                'name' =>'username',
-                'data' =>'username',
-                'title' => trans('admin.username'),
+                'name' =>'country_name_ar',
+                'data' =>'country_name_ar',
+                'title' => trans('admin.country_name_ar'),
                 ],
                 [ 
-                'name' =>'email',
-                'data' =>'email',
-                'title' => trans('admin.email'),
-                ],
-                [
-                'name' =>'level',
-                'data' =>'level',
-                'title' => trans('admin.level'),
-                 ],
+                'name' =>'country_name_en',
+                'data' =>'country_name_en',
+                'title' => trans('admin.country_name_en'),
+                ] 
+                ,
                  [
                 'name' =>'created_at',
                 'data' =>'created_at',
@@ -196,6 +187,6 @@ class UsersDatatable extends DataTable
      */
     protected function filename()
     {
-        return 'countries_' . date('YmdHis');
+        return 'User_' . date('YmdHis');
     }
 }
