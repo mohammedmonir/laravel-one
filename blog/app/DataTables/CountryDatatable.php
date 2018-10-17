@@ -18,15 +18,15 @@ class CountryDatatable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-            ->addColumn('checkbox', 'admin.users.btn.checkbox')
-            ->addColumn('edit', 'admin.users.btn.edit')
-            ->addColumn('delete', 'admin.users.btn.delete')
-            ->addColumn('level', 'admin.users.btn.level')
+            ->addColumn('checkbox', 'admin.countries.btn.checkbox')
+            ->addColumn('edit', 'admin.countries.btn.edit')
+            ->addColumn('delete', 'admin.countries.btn.delete')
+           
             ->rawColumns([
                 'edit',
                 'delete',
                 'checkbox',
-                'level'
+               
             ]);
     }
 
@@ -187,6 +187,6 @@ class CountryDatatable extends DataTable
      */
     protected function filename()
     {
-        return 'User_' . date('YmdHis');
+        return 'Country_' . date('YmdHis');
     }
 }

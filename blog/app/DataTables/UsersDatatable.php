@@ -18,10 +18,10 @@ class UsersDatatable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-            ->addColumn('checkbox', 'admin.countries.btn.checkbox')
-            ->addColumn('edit', 'admin.countries.btn.edit')
-            ->addColumn('delete', 'admin.countries.btn.delete')
-            ->addColumn('level', 'admin.countries.btn.level')
+            ->addColumn('checkbox', 'admin.users.btn.checkbox')
+            ->addColumn('edit', 'admin.users.btn.edit')
+            ->addColumn('delete', 'admin.users.btn.delete')
+            ->addColumn('level', 'admin.users.btn.level')
             ->rawColumns([
                 'edit',
                 'delete',

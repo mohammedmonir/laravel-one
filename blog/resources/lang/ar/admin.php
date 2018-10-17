@@ -63,6 +63,9 @@ return [
     'create_countries' =>'اضافة دولة جديدة',
     'country_name_en' =>' اسم الدولة بالانجلش',
     'country_name_ar' =>' اسم الدولة بالعربي ',
+    'country_flag' =>' العلم',
+    'mob' =>' كود الدولة',
+    'code' =>' اختصار / رمز الدولة ',
     
 ];
 

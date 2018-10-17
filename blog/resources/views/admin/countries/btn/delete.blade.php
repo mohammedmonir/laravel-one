@@ -12,12 +12,12 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">{{trans('admin.delete')}}</h4>
       </div>
-      {!!Form::open(['route'=>['users.destroy',$id],'method'=>'delete'])!!}
-      <div class="modal-body">
-        <h4>{{trans('admin.delete_this',['username'=>$username])}}</h4>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      {!!Form::open(['route'=>['countries.destroy',$id],'method'=>'delete'])!!}
+          <div class="modal-body">
+            <h4>{{trans('admin.delete_this',['username'=>session('lang')=='ar'?$country_name_ar:$country_name_en])}}</h4>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       {!!Form::submit(trans('admin.yes'),['class'=>'btn btn-danger'])!!}
       </div>
       {!!Form::close()!!}

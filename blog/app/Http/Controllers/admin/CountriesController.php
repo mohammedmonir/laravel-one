@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\DataTables\CountryDatatable;
 use App\model\Country;
 use Illuminate\Http\Request;
+use Storage;
 
 class CountriesController extends Controller
 {
@@ -39,17 +40,18 @@ class CountriesController extends Controller
         
        $data = $this->validate(request(),
         [
-            'country_name_ar' =>'required',
-            'country_name_en' =>'required',
-            'mob' =>'required',
-            'code' =>'required',
-            'logo' =>'required', 
+            'country_name_ar'       =>'required',
+            'country_name_en'       =>'required',
+            'mob'                   =>'required',
+            'code'                  =>'required',
+            'logo'                  =>'required|'.v_image(), 
         ]);
         if(request()->hasFile('logo')){
             $data['logo']=up()->upload([
                 'file'=>'logo',
                 'path'=>'countries',
                 'upload_type'=>'single',
+                'delete_file' => '',
             ]);
             }   
 
@@ -100,7 +102,7 @@ class CountriesController extends Controller
             'country_name_en' =>'required',
             'mob' =>'required',
             'code' =>'required',
-            'logo' =>'required', 
+            'logo' =>'sometimes|nullable|'.v_image(), 
         ]);
         if(request()->hasFile('logo')){
             $data['logo']=up()->upload([
@@ -111,10 +113,9 @@ class CountriesController extends Controller
             ]);
             }   
 
-        $data['password']=bcrypt(request('password'));
-        $data['remember_token']='zyhpmRyfJP';
+        
         Country::where('id',$id)->update($data);
-        session()->flash('success',trans('admin.record_added'));
+        session()->flash('success',trans('admin.updated'));
         return redirect(url('admin/countries'));
     
        
@@ -132,7 +133,7 @@ class CountriesController extends Controller
         Storage::delete($contries->logo);
         $contries->delete();
         session()->flash('success',trans('admin.deletesuccess'));
-        return redirect(url('admin/admin'));
+        return redirect(url('admin/countries'));
 
     }
     public function multi_delete(){
@@ -142,12 +143,13 @@ class CountriesController extends Controller
             Storage::delete($contries->logo);
             $contries->delete();
           }
+          
         }else{
             $contries= Country::find(request('item'));
             Storage::delete($contries->logo);
             $contries->delete();
         }
         session()->flash('success',trans('admin.deleted_record'));
-        return redirect(url('admin/admin'));
+        return redirect(url('admin/countries'));
     }
 }

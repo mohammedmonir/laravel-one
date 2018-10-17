@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 17 أكتوبر 2018 الساعة 01:06
+-- Generation Time: 17 أكتوبر 2018 الساعة 16:29
 -- إصدار الخادم: 10.1.31-MariaDB
 -- PHP Version: 7.1.16
 
@@ -43,8 +43,6 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `username`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(13, 'Harrison Nader', 'grover46@example.net', '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', 'tCEoBIUuFx', '2018-09-19 19:13:14', '2018-09-19 19:13:14'),
-(14, 'Caleb Pfannerstill', 'maverick96@example.org', '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', 'f9OsuVuVW7', '2018-09-19 19:13:14', '2018-09-19 19:13:14'),
 (15, 'Mr. Michel Wolf', 'clemmie13@example.com', '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', 'oBOEXSvA0f', '2018-09-19 19:13:14', '2018-09-19 19:13:14'),
 (16, 'Lawson Reilly', 'hudson.delmer@example.com', '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', 'WhoVzer3Dh', '2018-09-19 19:13:14', '2018-09-19 19:13:14'),
 (17, 'Hunter Pollich', 'omueller@example.net', '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', 'gwUioGxaB9', '2018-09-19 19:13:14', '2018-09-19 19:13:14'),
@@ -241,10 +239,17 @@ CREATE TABLE `countries` (
   `country_name_en` varchar(255) NOT NULL,
   `mob` varchar(255) NOT NULL,
   `code` varchar(255) NOT NULL,
-  `logo` varchar(255) NOT NULL,
+  `logo` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `countries`
+--
+
+INSERT INTO `countries` (`id`, `country_name_ar`, `country_name_en`, `mob`, `code`, `logo`, `created_at`, `updated_at`) VALUES
+(3, 'مصر', 'Egypt', '002', 'eg', 'countries/3jHg4fhM5tcfCsM5UegOm2yuuF3Nzo0CxRy34WKY.png', '2018-10-17 13:14:04', '2018-10-17 13:14:04');
 
 -- --------------------------------------------------------
 
@@ -337,13 +342,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- إرجاع أو استيراد بيانات الجدول `users`
---
-
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `level`, `created_at`, `updated_at`) VALUES
-(1, 'mohammed2', 'mohammed@hotmail.com', '123123', 'vendor', '2018-09-27 21:23:16', '2018-09-27 21:23:16');
-
---
 -- Indexes for dumped tables
 --
 
@@ -397,7 +395,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `files`
