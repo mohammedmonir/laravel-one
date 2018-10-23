@@ -55,8 +55,6 @@ class CountriesController extends Controller
             ]);
             }   
 
-        $data['password']=bcrypt(request('password'));
-        $data['remember_token']='zyhpmRyfJP';
         Country::create($data);
         session()->flash('success',trans('admin.record_added'));
         return redirect(url('admin/countries'));

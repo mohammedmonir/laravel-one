@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 17 أكتوبر 2018 الساعة 16:29
+-- Generation Time: 23 أكتوبر 2018 الساعة 16:06
 -- إصدار الخادم: 10.1.31-MariaDB
 -- PHP Version: 7.1.16
 
@@ -221,11 +221,33 @@ INSERT INTO `admins` (`id`, `username`, `email`, `password`, `remember_token`, `
 (202, 'Peggie Kemmer', 'tdaniel@example.org', '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', 'Ju8UFpz3OB', '2018-09-19 19:13:18', '2018-09-19 19:13:18'),
 (203, 'Miss Elouise Hilll', 'deckow.marilou@example.org', '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', 'J81unmsIlV', '2018-09-19 19:13:18', '2018-09-19 19:13:18'),
 (204, 'fgdfg', 'ffgdffgdfffdgd', 'fdgdfg', '', '2018-09-25 06:39:50', '2018-09-25 06:39:50'),
-(205, 'ابو حازم', 'ali79ali79ali19997@gmail.com', '$2y$10$7fLvQlI3ub5WB9XgXDB.E.YBnh8Om0212oNHg2wR5LRew/9JCjYcW', 'hjdsfhskjdfhsd', '2018-09-25 07:01:03', '2018-09-25 07:01:03'),
-(206, 'ابو حازم', 'fff@hotmail.com', '$2y$10$5ENskfJJEbEwSS7dgzkv8u2MPTm7ii7eZ4iFilztZZFhNEFG3ekam', 'hjdsfhskjdfhsd', '2018-09-25 19:42:11', '2018-09-25 19:42:11'),
-(207, 'يوسف', 'tes23123t2@hotmail.com', '$2b$10$zTgQqtedPslpxw3MXtnbPeso34Q2O99t2AEc6qOLNIRxJ9TnmtUvO', 'zyhpmRyfJP', '2018-09-30 21:26:29', '2018-09-30 21:26:29'),
-(208, 'يوسف', 'test453532@hotmail.com', '$2y$10$c2q21EFxihkrToYWGQu0O.N1fbcBD9sVO5ebA3ekcb2q5A8or87Lu', 'zyhpmRyfJP', '2018-09-30 21:28:16', '2018-09-30 21:28:16'),
-(209, 'يوسف', 'mohammed@hotmail.com', '$2y$10$.Nt3Bzn.It6EBbWgYXP.v.qNRAaJibf7Qa00NGyTR3bZeUrNM//2S', 'O0cXrApbazSiHHOucmkWlBNAzn5Z5eSVCrs6vYXEi5ym4MzCgSIB7GxyaKoN', '2018-10-01 12:28:58', '2018-10-01 12:28:58');
+(205, '??? ????', 'ali79ali79ali19997@gmail.com', '$2y$10$7fLvQlI3ub5WB9XgXDB.E.YBnh8Om0212oNHg2wR5LRew/9JCjYcW', 'hjdsfhskjdfhsd', '2018-09-25 07:01:03', '2018-09-25 07:01:03'),
+(206, '??? ????', 'fff@hotmail.com', '$2y$10$5ENskfJJEbEwSS7dgzkv8u2MPTm7ii7eZ4iFilztZZFhNEFG3ekam', 'hjdsfhskjdfhsd', '2018-09-25 19:42:11', '2018-09-25 19:42:11'),
+(207, '????', 'tes23123t2@hotmail.com', '$2b$10$zTgQqtedPslpxw3MXtnbPeso34Q2O99t2AEc6qOLNIRxJ9TnmtUvO', 'zyhpmRyfJP', '2018-09-30 21:26:29', '2018-09-30 21:26:29'),
+(208, '????', 'test453532@hotmail.com', '$2y$10$c2q21EFxihkrToYWGQu0O.N1fbcBD9sVO5ebA3ekcb2q5A8or87Lu', 'zyhpmRyfJP', '2018-09-30 21:28:16', '2018-09-30 21:28:16'),
+(209, 'test', 'mohammed@hotmail.com', '$2y$10$.Nt3Bzn.It6EBbWgYXP.v.qNRAaJibf7Qa00NGyTR3bZeUrNM//2S', 'U1Ssud6XHukLzNIG0ctNMoJgDZOUHsfJ2lNoTq7D31IooiX3ihm4TGb6uf8W', '2018-10-01 12:28:58', '2018-10-01 12:28:58');
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `cities`
+--
+
+CREATE TABLE `cities` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `city_name_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `city_name_en` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `cities`
+--
+
+INSERT INTO `cities` (`id`, `city_name_ar`, `city_name_en`, `country_id`, `created_at`, `updated_at`) VALUES
+(3, 'القاهرة', 'Cairo', 4, '2018-10-23 13:41:59', '2018-10-23 13:41:59');
 
 -- --------------------------------------------------------
 
@@ -243,13 +265,6 @@ CREATE TABLE `countries` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- إرجاع أو استيراد بيانات الجدول `countries`
---
-
-INSERT INTO `countries` (`id`, `country_name_ar`, `country_name_en`, `mob`, `code`, `logo`, `created_at`, `updated_at`) VALUES
-(3, 'مصر', 'Egypt', '002', 'eg', 'countries/3jHg4fhM5tcfCsM5UegOm2yuuF3Nzo0CxRy34WKY.png', '2018-10-17 13:14:04', '2018-10-17 13:14:04');
 
 -- --------------------------------------------------------
 
@@ -270,6 +285,18 @@ CREATE TABLE `files` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -323,7 +350,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `sitename_ar`, `sitename_en`, `logo`, `icon`, `email`, `main_lang`, `description`, `keywords`, `status`, `message_maintenance`, `created_at`, `updated_at`) VALUES
-(1, 'كابيتال مول', 'store', 'settings/o2BH6yhtE3A4vduFTAy8cOZE1GSTJdi08WKsJXE9.jpeg', 'settings/KuUYibWU7h7dZhLnoY22ecjbhcnBCsZDZLosxIQ5.jpeg', 'd@htomail.com3', 'ar', 'hello hello hello hello hello hello', 'hello hello hello hello', 'open', 'الموقع مغلق للاسف', '2018-10-01 13:18:56', '2018-10-14 22:46:47');
+(1, '??????? ???', 'store', 'settings/o2BH6yhtE3A4vduFTAy8cOZE1GSTJdi08WKsJXE9.jpeg', 'settings/KuUYibWU7h7dZhLnoY22ecjbhcnBCsZDZLosxIQ5.jpeg', 'd@htomail.com3', 'ar', 'hello hello hello hello hello hello', 'hello hello hello hello', 'open', '?????? ???? ?????', '2018-10-01 13:18:56', '2018-10-14 22:46:47');
 
 -- --------------------------------------------------------
 
@@ -352,6 +379,12 @@ ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `cities`
+--
+ALTER TABLE `cities`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `countries`
 --
 ALTER TABLE `countries`
@@ -361,6 +394,12 @@ ALTER TABLE `countries`
 -- Indexes for table `files`
 --
 ALTER TABLE `files`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -392,16 +431,28 @@ ALTER TABLE `admins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
 
 --
+-- AUTO_INCREMENT for table `cities`
+--
+ALTER TABLE `cities`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `password_resets`

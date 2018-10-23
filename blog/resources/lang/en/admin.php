@@ -64,6 +64,10 @@ return [
     'create_countries' =>'create countries',
     'country_name_en' =>' contry name en ',
     'country_name_ar' =>' country name ar ',
+    'city_name_ar' =>' city name arabic ',
+    'city_name_en' =>'  city name English',
+    'country_id' =>'Country',
+    'cities' =>'cities',
     
     
     

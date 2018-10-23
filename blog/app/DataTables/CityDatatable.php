@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\User;
+use App\Model\City;
 
 use Yajra\DataTables\Services\DataTable;
 
-class UsersDatatable extends DataTable
+class CityDatatable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,15 +18,15 @@ class UsersDatatable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-            ->addColumn('checkbox', 'admin.users.btn.checkbox')
-            ->addColumn('edit', 'admin.users.btn.edit')
-            ->addColumn('delete', 'admin.users.btn.delete')
-            ->addColumn('level', 'admin.users.btn.level')
+            ->addColumn('checkbox', 'admin.cities.btn.checkbox')
+            ->addColumn('edit', 'admin.cities.btn.edit')
+            ->addColumn('delete', 'admin.cities.btn.delete')
+           
             ->rawColumns([
                 'edit',
                 'delete',
                 'checkbox',
-                'level'
+               
             ]);
     }
 
@@ -36,14 +36,9 @@ class UsersDatatable extends DataTable
      * @param \App\User $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(User $model)
+    public function query()
     {
-        return User::query()->where(function($q){
-            if(request()->has('level')){
-                return $q->where('level',request('level'));
-            }
-
-        });
+        return City::query()->with('country_id')->select('cities.*');
     }
     
 
@@ -83,7 +78,7 @@ class UsersDatatable extends DataTable
                 
                 ],
                 'initComplete' =>    "function () {
-                                this.api().columns([2,3]).every(function () {
+                                this.api().columns([2,3,4]).every(function () {
                                 var column = this;
                                 var input = document.createElement('input');
                                 $(input).appendTo($(column.footer()).empty())
@@ -143,20 +138,21 @@ class UsersDatatable extends DataTable
                 'title' => trans('admin.id'),
                 ],
                 [ 
-                'name' =>'username',
-                'data' =>'username',
-                'title' => trans('admin.username'),
+                'name' =>'city_name_ar',
+                'data' =>'city_name_ar',
+                'title' => trans('admin.country_name_ar'),
                 ],
                 [ 
-                'name' =>'email',
-                'data' =>'email',
-                'title' => trans('admin.email'),
-                ],
-                [
-                'name' =>'level',
-                'data' =>'level',
-                'title' => trans('admin.level'),
-                 ],
+                'name' =>'city_name_en',
+                'data' =>'city_name_en',
+                'title' => trans('admin.country_name_en'),
+                ] ,
+                [ 
+                'name' =>'country_id.country_name_'.session('lang'),
+                'data' =>'country_id.country_name_'.session('lang'),
+                'title' => trans('admin.country_id'),
+                ] 
+                ,
                  [
                 'name' =>'created_at',
                 'data' =>'created_at',
@@ -196,6 +192,6 @@ class UsersDatatable extends DataTable
      */
     protected function filename()
     {
-        return 'User_' . date('YmdHis');
+        return 'cities' . date('YmdHis');
     }
 }
