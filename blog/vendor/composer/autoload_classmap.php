@@ -45,6 +45,7 @@ return array(
     'App\\model\\City' => $baseDir . '/app/model/City.php',
     'App\\model\\Country' => $baseDir . '/app/model/Country.php',
     'App\\model\\Setting' => $baseDir . '/app/model/Setting.php',
+    'App\\model\\State' => $baseDir . '/app/model/State.php',
     'ArithmeticError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
     'AssertionError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',

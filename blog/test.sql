@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 23 أكتوبر 2018 الساعة 16:06
+-- Generation Time: 26 أكتوبر 2018 الساعة 20:36
 -- إصدار الخادم: 10.1.31-MariaDB
 -- PHP Version: 7.1.16
 
@@ -225,7 +225,7 @@ INSERT INTO `admins` (`id`, `username`, `email`, `password`, `remember_token`, `
 (206, '??? ????', 'fff@hotmail.com', '$2y$10$5ENskfJJEbEwSS7dgzkv8u2MPTm7ii7eZ4iFilztZZFhNEFG3ekam', 'hjdsfhskjdfhsd', '2018-09-25 19:42:11', '2018-09-25 19:42:11'),
 (207, '????', 'tes23123t2@hotmail.com', '$2b$10$zTgQqtedPslpxw3MXtnbPeso34Q2O99t2AEc6qOLNIRxJ9TnmtUvO', 'zyhpmRyfJP', '2018-09-30 21:26:29', '2018-09-30 21:26:29'),
 (208, '????', 'test453532@hotmail.com', '$2y$10$c2q21EFxihkrToYWGQu0O.N1fbcBD9sVO5ebA3ekcb2q5A8or87Lu', 'zyhpmRyfJP', '2018-09-30 21:28:16', '2018-09-30 21:28:16'),
-(209, 'test', 'mohammed@hotmail.com', '$2y$10$.Nt3Bzn.It6EBbWgYXP.v.qNRAaJibf7Qa00NGyTR3bZeUrNM//2S', 'U1Ssud6XHukLzNIG0ctNMoJgDZOUHsfJ2lNoTq7D31IooiX3ihm4TGb6uf8W', '2018-10-01 12:28:58', '2018-10-01 12:28:58');
+(209, '????', 'mohammed@hotmail.com', '$2y$10$.Nt3Bzn.It6EBbWgYXP.v.qNRAaJibf7Qa00NGyTR3bZeUrNM//2S', 'O0cXrApbazSiHHOucmkWlBNAzn5Z5eSVCrs6vYXEi5ym4MzCgSIB7GxyaKoN', '2018-10-01 12:28:58', '2018-10-01 12:28:58');
 
 -- --------------------------------------------------------
 
@@ -247,7 +247,7 @@ CREATE TABLE `cities` (
 --
 
 INSERT INTO `cities` (`id`, `city_name_ar`, `city_name_en`, `country_id`, `created_at`, `updated_at`) VALUES
-(3, 'القاهرة', 'Cairo', 4, '2018-10-23 13:41:59', '2018-10-23 13:41:59');
+(2, 'القاهرة', 'Cairo', 2, '2018-10-26 16:25:53', '2018-10-26 16:25:53');
 
 -- --------------------------------------------------------
 
@@ -256,15 +256,22 @@ INSERT INTO `cities` (`id`, `city_name_ar`, `city_name_en`, `country_id`, `creat
 --
 
 CREATE TABLE `countries` (
-  `id` int(11) NOT NULL,
-  `country_name_ar` varchar(255) NOT NULL,
-  `country_name_en` varchar(255) NOT NULL,
-  `mob` varchar(255) NOT NULL,
-  `code` varchar(255) NOT NULL,
-  `logo` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` int(10) UNSIGNED NOT NULL,
+  `country_name_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country_name_en` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mob` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `logo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `countries`
+--
+
+INSERT INTO `countries` (`id`, `country_name_ar`, `country_name_en`, `mob`, `code`, `logo`, `created_at`, `updated_at`) VALUES
+(2, 'مصر', 'Egypt', '002', 'eg', 'countries/6XlxqHa9yZg8JLPN5BvgTsYQWyEEucswqr2Knf9r.png', '2018-10-26 16:25:42', '2018-10-26 16:25:42');
 
 -- --------------------------------------------------------
 
@@ -297,6 +304,15 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2018_10_22_185531_contries', 1),
+(2, '2018_10_23_151630_cities', 1),
+(3, '2018_10_25_215940_state', 1);
 
 -- --------------------------------------------------------
 
@@ -355,6 +371,22 @@ INSERT INTO `settings` (`id`, `sitename_ar`, `sitename_en`, `logo`, `icon`, `ema
 -- --------------------------------------------------------
 
 --
+-- بنية الجدول `states`
+--
+
+CREATE TABLE `states` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `city_name_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `city_name_en` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `city_id` int(10) UNSIGNED NOT NULL,
+  `country_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- بنية الجدول `users`
 --
 
@@ -367,6 +399,13 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `level`, `created_at`, `updated_at`) VALUES
+(2, 'ابو حازم', 'mohammed@hotmail.com', '$2y$10$NQubHvUkglZkWIDTUBUOn.LeNVVajdaLbqm0isK7whyrU3.W1Tcay', 'user', '2018-10-25 20:13:49', '2018-10-25 20:13:49');
 
 --
 -- Indexes for dumped tables
@@ -382,7 +421,8 @@ ALTER TABLE `admins`
 -- Indexes for table `cities`
 --
 ALTER TABLE `cities`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cities_country_id_foreign` (`country_id`);
 
 --
 -- Indexes for table `countries`
@@ -415,6 +455,14 @@ ALTER TABLE `settings`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `states`
+--
+ALTER TABLE `states`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `states_city_id_foreign` (`city_id`),
+  ADD KEY `states_country_id_foreign` (`country_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -434,13 +482,13 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `cities`
 --
 ALTER TABLE `cities`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `files`
@@ -452,7 +500,7 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `password_resets`
@@ -467,10 +515,33 @@ ALTER TABLE `settings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `states`
+--
+ALTER TABLE `states`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- قيود الجداول المحفوظة
+--
+
+--
+-- القيود للجدول `cities`
+--
+ALTER TABLE `cities`
+  ADD CONSTRAINT `cities_country_id_foreign` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`) ON DELETE CASCADE;
+
+--
+-- القيود للجدول `states`
+--
+ALTER TABLE `states`
+  ADD CONSTRAINT `states_city_id_foreign` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `states_country_id_foreign` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

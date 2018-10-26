@@ -68,6 +68,11 @@ return [
     'city_name_en' =>'  city name English',
     'country_id' =>'Country',
     'cities' =>'cities',
+    'states' =>'states',
+    'state_name_ar' =>'state name in arabic',
+    'state_name_en' =>'state name in english',
+    'create_states' =>'create states',
+    'city_id' =>'city ',
     
     
     

@@ -106,9 +106,22 @@
             {{trans('admin.cities')}} 
             
           </a>
-          <ul class="treeview-menu" style='{{ active_menu('countries')[1] }}'>
+          <ul class="treeview-menu" style='{{ active_menu('cities')[1] }}'>
             <li class=""><a href="{{url('admin/cities')}}"><i class="fa fa-flag"></i>{{trans('admin.cities')}} </a></li>
             <li class=""><a href="{{url('admin/cities/create')}}"><i class="fa fa-plus"></i>{{trans('admin.add')}} </a></li>
+        
+          </ul>
+        </li>
+        
+         <li class="treeview {{ active_menu('states')[0] }}"> 
+          <a href="#">
+            <i class="fa fa-users"></i>
+            {{trans('admin.states')}} 
+            
+          </a>
+          <ul class="treeview-menu" style='{{ active_menu('states')[1] }}'>
+            <li class=""><a href="{{url('admin/states')}}"><i class="fa fa-flag"></i>{{trans('admin.states')}} </a></li>
+            <li class=""><a href="{{url('admin/states/create')}}"><i class="fa fa-plus"></i>{{trans('admin.add')}} </a></li>
         
           </ul>
         </li>

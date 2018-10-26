@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Model\City;
+use App\Model\State;
 
 use Yajra\DataTables\Services\DataTable;
 
-class CityDatatable extends DataTable
+class StateDatatable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,9 +18,9 @@ class CityDatatable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-            ->addColumn('checkbox', 'admin.cities.btn.checkbox')
-            ->addColumn('edit', 'admin.cities.btn.edit')
-            ->addColumn('delete', 'admin.cities.btn.delete')
+            ->addColumn('checkbox', 'admin.states.btn.checkbox')
+            ->addColumn('edit', 'admin.states.btn.edit')
+            ->addColumn('delete', 'admin.states.btn.delete')
            
             ->rawColumns([
                 'edit',
@@ -38,7 +38,7 @@ class CityDatatable extends DataTable
      */
     public function query()
     {
-        return City::query()->with('country_id')->select('cities.*');
+        return State::query()->with('country_id')->with('city_id')->select('states.*');
     }
     
 
@@ -78,7 +78,7 @@ class CityDatatable extends DataTable
                 
                 ],
                 'initComplete' =>    "function () {
-                                this.api().columns([2,3,4]).every(function () {
+                                this.api().columns([2,3,4,5]).every(function () {
                                 var column = this;
                                 var input = document.createElement('input');
                                 $(input).appendTo($(column.footer()).empty())
@@ -138,19 +138,25 @@ class CityDatatable extends DataTable
                 'title' => trans('admin.id'),
                 ],
                 [ 
-                'name' =>'city_name_ar',
-                'data' =>'city_name_ar',
-                'title' => trans('admin.city_name_ar'),
+                'name' =>'state_name_ar',
+                'data' =>'state_name_ar',
+                'title' => trans('admin.state_name_ar'),
                 ],
                 [ 
-                'name' =>'city_name_en',
-                'data' =>'city_name_en',
-                'title' => trans('admin.city_name_en'),
+                'name' =>'state_name_en',
+                'data' =>'state_name_en',
+                'title' => trans('admin.state_name_en'),
                 ] ,
                 [ 
                 'name' =>'country_id.country_name_'.session('lang'),
                 'data' =>'country_id.country_name_'.session('lang'),
                 'title' => trans('admin.country_id'),
+                ] 
+                ,
+                [ 
+                'name' =>'city_id.city_name_'.session('lang'),
+                'data' =>'city_id.city_name_'.session('lang'),
+                'title' => trans('admin.city_id'),
                 ] 
                 ,
                  [
@@ -192,6 +198,6 @@ class CityDatatable extends DataTable
      */
     protected function filename()
     {
-        return 'cities' . date('YmdHis');
+        return 'states' . date('YmdHis');
     }
 }
