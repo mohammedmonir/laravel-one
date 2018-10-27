@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\DataTables\StateDatatable;
 use App\model\State;
+use App\model\City;
 use Illuminate\Http\Request;
 use Storage;
 
@@ -26,6 +27,13 @@ class StatesController extends Controller
      */
     public function create()
     {
+        if(request()->ajax()){
+            $select = request()->has('select')?request('select'):'';
+
+            return \Form::select('city_id',City::where('country_id',request('country_id'))->pluck('city_name_'.session("lang"),'id')
+            ,$select,['class'=>'form-control','placeholder'=>'..............']);
+        }
+
         return view('admin.states.create',['title'=>trans('admin.create_states')]);
     }
 
@@ -71,9 +79,9 @@ class StatesController extends Controller
      */
     public function edit($id)
     {
-        $country = State::find($id);
+        $state = State::find($id);
         $title = trans('admin.edit');
-        return view('admin.states.edit',compact('country','title'));
+        return view('admin.states.edit',compact('state','title'));
     }
 
     /**

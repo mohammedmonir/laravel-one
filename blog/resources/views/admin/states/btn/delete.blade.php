@@ -14,7 +14,7 @@
       </div>
          {!!Form::open(['route'=>['states.destroy',$id],'method'=>'delete'])!!}
           <div class="modal-body">
-            <h4>{{trans('admin.delete_this',['username'=>session('lang')=='ar'?$city_name_ar:$city_name_en])}}</h4>
+            <h4>{{trans('admin.delete_this',['username'=>session('lang')=='ar'?$state_name_ar:$state_name_en])}}</h4>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -15,8 +15,8 @@ class State extends Migration
     {
         Schema::create('states', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('city_name_ar');
-            $table->string('city_name_en');
+            $table->string('state_name_ar');
+            $table->string('state_name_en');
             $table->integer('city_id')->unsigned();
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->integer('country_id')->unsigned();
