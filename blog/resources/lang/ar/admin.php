@@ -76,6 +76,14 @@ return [
     'create_states' =>'اضافة منطقة جديدة ',
     'city_id' =>'المدينة ',
     'create_cities' =>'انشاء مدن ',
+    'departments' =>' الاقسام ',
+    'dep_name_ar'       =>'اسم القسم بالعربي',
+    'dep_name_en'       =>'اسم القسم بالانجلش',
+    'icon'              =>'الرمز',
+    'description'       =>'الوصف',
+    'keyword'           =>'الكلمات الدليلية',
+    'parent_id'         =>'فرعي من',
+
     
 ];
 

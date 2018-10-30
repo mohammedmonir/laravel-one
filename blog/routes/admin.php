@@ -23,6 +23,8 @@ Route::group(['prefix'=>'admin','namespace'=> 'admin'],function(){
            
             Route::resource('cities','CitiesController');
             Route::delete('cities/distroy/all','CitiesController@multi_delete');
+          
+            Route::resource('departments','DepartmentsController');
             
             Route::resource('states','StatesController');
             Route::delete('states/distroy/all','StatesController@multi_delete');
