@@ -247,6 +247,9 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ url('') }}/desginadminLET/dist/js/demo.js"></script>
 <script src="{{ url('') }}/desginadminLET/dist/js/myfunction.js"></script>
+<script src="{{ url('') }}/design/jstree/jstree.js"></script>
+<script src="{{ url('') }}/design/jstree/jstree.wholerow.js"></script>
+<script src="{{ url('') }}/design/jstree/jstree.checkbox.js"></script>
 @stack('js')
 
 </body>
