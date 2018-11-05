@@ -82,7 +82,7 @@ return [
     'icon'              =>'الرمز',
     'description'       =>'الوصف',
     'keyword'           =>'الكلمات الدليلية',
-    'parent_id'         =>'فرعي من',
+    'parent'         =>'فرعي من',
 
     
 ];

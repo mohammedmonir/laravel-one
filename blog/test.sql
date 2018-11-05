@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 30 أكتوبر 2018 الساعة 23:11
+-- Generation Time: 05 نوفمبر 2018 الساعة 13:18
 -- إصدار الخادم: 10.1.31-MariaDB
 -- PHP Version: 7.1.16
 
@@ -286,10 +286,21 @@ CREATE TABLE `departments` (
   `icon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `keyword` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `parent_id` int(10) UNSIGNED DEFAULT NULL,
+  `parent` int(10) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `departments`
+--
+
+INSERT INTO `departments` (`id`, `dep_name_ar`, `dep_name_en`, `icon`, `description`, `keyword`, `parent`, `created_at`, `updated_at`) VALUES
+(1, 'فسم تجريبي', 'test departments', NULL, NULL, NULL, NULL, '2018-11-05 11:27:00', '2018-11-05 11:27:00'),
+(2, 'فسم تجريبي فرعي', 'test departments sub', NULL, NULL, NULL, 1, '2018-11-05 12:11:40', '2018-11-05 12:11:40'),
+(3, 'فسم تجريبي فرعي1', 'test departments sub1', NULL, NULL, NULL, 2, '2018-11-05 12:12:05', '2018-11-05 12:12:05'),
+(4, 'فسم تجريبي فرعي2', 'test departments sub2', NULL, NULL, NULL, 2, '2018-11-05 12:12:32', '2018-11-05 12:12:32'),
+(5, 'فسم تجريبي فرعي1 3', 'test departments sub12', NULL, NULL, NULL, 3, '2018-11-05 12:13:11', '2018-11-05 12:13:11');
 
 -- --------------------------------------------------------
 
@@ -331,7 +342,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2018_10_22_185531_contries', 1),
 (5, '2018_10_23_151630_cities', 1),
 (6, '2018_10_25_215940_state', 1),
-(7, '2018_10_30_230222_create_departments_table', 2);
+(8, '2018_10_30_230222_create_departments_table', 2);
 
 -- --------------------------------------------------------
 
@@ -461,7 +472,7 @@ ALTER TABLE `countries`
 --
 ALTER TABLE `departments`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `departments_parent_id_foreign` (`parent_id`);
+  ADD KEY `departments_parent_foreign` (`parent`);
 
 --
 -- Indexes for table `files`
@@ -527,7 +538,7 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `files`
@@ -539,7 +550,7 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `password_resets`
@@ -579,7 +590,7 @@ ALTER TABLE `cities`
 -- القيود للجدول `departments`
 --
 ALTER TABLE `departments`
-  ADD CONSTRAINT `departments_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `departments` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `departments_parent_foreign` FOREIGN KEY (`parent`) REFERENCES `departments` (`id`) ON DELETE CASCADE;
 
 --
 -- القيود للجدول `states`

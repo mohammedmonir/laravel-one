@@ -42,11 +42,20 @@ class DepartmentsController extends Controller
         [
             'dep_name_ar'       =>'required',
             'dep_name_en'       =>'required',
-            'icon'              =>'sometimes|nullable',
+            'icon'              =>'sometimes|nullable'.v_image(),
             'description'       =>'sometimes|nullable',
             'keyword'           =>'sometimes|nullable',
-            'parent_id'         =>'sometimes|nullable|numeric',
+            'parent'         =>'sometimes|nullable|numeric',
         ]);
+
+         if(request()->hasFile('icon')){
+            $data['icon']=up()->upload([
+                'file'=>'icon',
+                'path'=>'departments',
+                'upload_type'=>'single',
+                'delete_file' => '',
+            ]);
+            }   
        
    
         Department::create($data);
@@ -73,9 +82,9 @@ class DepartmentsController extends Controller
      */
     public function edit($id)
     {
-        $country = City::find($id);
+        $department = Department::find($id);
         $title = trans('admin.edit');
-        return view('admin.cities.edit',compact('country','title'));
+        return view('admin.cities.edit',compact('department','title'));
     }
 
     /**
@@ -95,8 +104,17 @@ class DepartmentsController extends Controller
             'icon'              =>'sometimes|nullable',
             'description'       =>'sometimes|nullable',
             'keyword'           =>'sometimes|nullable',
-            'parent_id'         =>'sometimes|nullable|numeric',
+            'parent'         =>'sometimes|nullable|numeric',
         ]);
+
+        if(request()->hasFile('icon')){
+            $data['icon']=up()->upload([
+                'file'=>'icon',
+                'path'=>'departments',
+                'upload_type'=>'single',
+                'delete_file' => Department::find($id)->icon,
+            ]);
+        }   
     
 
         

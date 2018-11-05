@@ -73,6 +73,13 @@ return [
     'state_name_en' =>'state name in english',
     'create_states' =>'create states',
     'city_id' =>'city ',
+    'departments' =>' departments ',
+    'dep_name_ar'       =>'dep_name_ar',
+    'dep_name_en'       =>'dep_name_en',
+    'icon'              =>'icon',
+    'description'       =>'description',
+    'keyword'           =>' keyword',
+    'parent'         =>' parent',
     
     
     

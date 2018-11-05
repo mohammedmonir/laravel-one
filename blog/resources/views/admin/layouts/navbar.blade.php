@@ -135,7 +135,7 @@
           </a>
           <ul class="treeview-menu" style='{{ active_menu('departments')[1] }}'>
             <li class=""><a href="{{url('admin/departments')}}"><i class="fa fa-list"></i>{{trans('admin.departments')}} </a></li>
-            <li class=""><a href="{{url('admin/states/departments')}}"><i class="fa fa-plus"></i>{{trans('admin.add')}} </a></li>
+            <li class=""><a href="{{url('admin/departments/create')}}"><i class="fa fa-plus"></i>{{trans('admin.add')}} </a></li>
         
           </ul>
         </li>
