@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
-use App\DataTables\CityDatatable;
+
 use App\model\Department;
 use Illuminate\Http\Request;
 use Storage;
@@ -84,7 +84,7 @@ class DepartmentsController extends Controller
     {
         $department = Department::find($id);
         $title = trans('admin.edit');
-        return view('admin.cities.edit',compact('department','title'));
+        return view('admin.departments.edit',compact('department','title'));
     }
 
     /**
@@ -120,7 +120,7 @@ class DepartmentsController extends Controller
         
         Department::where('id',$id)->update($data);
         session()->flash('success',trans('admin.updated'));
-        return redirect(url('admin/cities'));
+        return redirect(url('admin/departments'));
     
        
     }
@@ -133,27 +133,27 @@ class DepartmentsController extends Controller
      */
     public function destroy($id)
     {
-        $cities= City::find($id);
+        $departments= Department::find($id);
      
-        $cities->delete();
+        $departments->delete();
         session()->flash('success',trans('admin.deletesuccess'));
-        return redirect(url('admin/cities'));
+        return redirect(url('admin/departments'));
 
     }
     public function multi_delete(){
         if(is_array(request('item'))){
           foreach(request('item') as $id){
-            $cities= City::find($id);
+            $departments= Department::find($id);
             Storage::delete($cities->logo);
-            $cities->delete();
+            $departments->delete();
           }
           
         }else{
-            $cities= City::find(request('item'));
+            $departments= Department::find(request('item'));
             Storage::delete($cities->logo);
-            $cities->delete();
+            $departments->delete();
         }
         session()->flash('success',trans('admin.deleted_record'));
-        return redirect(url('admin/cities'));
+        return redirect(url('admin/departments'));
     }
 }
