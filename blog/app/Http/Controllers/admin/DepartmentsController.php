@@ -131,29 +131,34 @@ class DepartmentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public static function delete_parent($id){
+        $department_parent = Department::where('parent',$id)->get();
+        foreach($department_parent as $sub){
+            self::delete_parent($sub->id);
+            if(!empty($sub->icon)){
+                Storage::has($sub->icon)?Storage::delete($sub->icon):'';
+            }
+            $subdepartment = Department::find($sub->id);
+            if(!empty($subdepartment)){
+                $subdepartment->delete();
+            }
+            
+        }
+        $dep = Department::find($id);
+        
+        if(!empty($dep->icon)){
+            Storage::has($dep->icon)?Storage::delete($dep->icon):'';
+        }
+        $dep->delete();
+    }
+
+
     public function destroy($id)
     {
-        $departments= Department::find($id);
-     
-        $departments->delete();
+        self::delete_parent($id);
         session()->flash('success',trans('admin.deletesuccess'));
         return redirect(url('admin/departments'));
 
     }
-    public function multi_delete(){
-        if(is_array(request('item'))){
-          foreach(request('item') as $id){
-            $departments= Department::find($id);
-            Storage::delete($cities->logo);
-            $departments->delete();
-          }
-          
-        }else{
-            $departments= Department::find(request('item'));
-            Storage::delete($cities->logo);
-            $departments->delete();
-        }
-        session()->flash('success',trans('admin.deleted_record'));
-        return redirect(url('admin/departments'));
-    }
+
 }

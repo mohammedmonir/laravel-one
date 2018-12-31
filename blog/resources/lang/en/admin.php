@@ -80,6 +80,7 @@ return [
     'description'       =>'description',
     'keyword'           =>' keyword',
     'parent'         =>' parent',
+    'ask_delete_dep'         =>'do you want to delete department ',
     
     
     

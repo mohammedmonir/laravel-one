@@ -83,6 +83,7 @@ return [
     'description'       =>'الوصف',
     'keyword'           =>'الكلمات الدليلية',
     'parent'         =>'فرعي من',
+    'ask_delete_dep'         =>' هل تريد حذف القسم',
 
     
 ];
