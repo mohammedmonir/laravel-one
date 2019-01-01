@@ -139,6 +139,19 @@
         
           </ul>
         </li>
+
+        <li class="treeview {{ active_menu('trademarks')[0] }}"> 
+          <a href="#">
+            <i class="fa fa-cube"></i>
+            {{trans('admin.trademarks')}} 
+            
+          </a>
+          <ul class="treeview-menu" style='{{ active_menu('trademarks')[1] }}'>
+            <li class=""><a href="{{url('admin/trademarks')}}"><i class="fa fa-cube"></i>{{trans('admin.trademarks')}} </a></li>
+            <li class=""><a href="{{url('admin/trademarks/create')}}"><i class="fa fa-plus"></i>{{trans('admin.add')}} </a></li>
+        
+          </ul>
+        </li>
       
    
      

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 05 نوفمبر 2018 الساعة 13:18
+-- Generation Time: 01 يناير 2019 الساعة 23:29
 -- إصدار الخادم: 10.1.31-MariaDB
 -- PHP Version: 7.1.16
 
@@ -296,11 +296,8 @@ CREATE TABLE `departments` (
 --
 
 INSERT INTO `departments` (`id`, `dep_name_ar`, `dep_name_en`, `icon`, `description`, `keyword`, `parent`, `created_at`, `updated_at`) VALUES
-(1, 'فسم تجريبي', 'test departments', NULL, NULL, NULL, NULL, '2018-11-05 11:27:00', '2018-11-05 11:27:00'),
-(2, 'فسم تجريبي فرعي', 'test departments sub', NULL, NULL, NULL, 1, '2018-11-05 12:11:40', '2018-11-05 12:11:40'),
-(3, 'فسم تجريبي فرعي1', 'test departments sub1', NULL, NULL, NULL, 2, '2018-11-05 12:12:05', '2018-11-05 12:12:05'),
-(4, 'فسم تجريبي فرعي2', 'test departments sub2', NULL, NULL, NULL, 2, '2018-11-05 12:12:32', '2018-11-05 12:12:32'),
-(5, 'فسم تجريبي فرعي1 3', 'test departments sub12', NULL, NULL, NULL, 3, '2018-11-05 12:13:11', '2018-11-05 12:13:11');
+(6, 'فسم تجريبي مهم', 'test departments', 'departments/MKoTXoyhTdhVCsuarDhbCZKpe73T0NtAcIe4f1N7.jpeg', NULL, NULL, NULL, '2018-11-06 14:01:02', '2019-01-01 20:57:43'),
+(7, 'فسم تجريبي', 'test departments', NULL, NULL, NULL, NULL, '2018-12-01 10:05:11', '2018-12-01 10:05:11');
 
 -- --------------------------------------------------------
 
@@ -342,7 +339,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2018_10_22_185531_contries', 1),
 (5, '2018_10_23_151630_cities', 1),
 (6, '2018_10_25_215940_state', 1),
-(8, '2018_10_30_230222_create_departments_table', 2);
+(8, '2018_10_30_230222_create_departments_table', 2),
+(9, '2019_01_01_234147_create_trade_marks_table', 3);
 
 -- --------------------------------------------------------
 
@@ -420,6 +418,28 @@ CREATE TABLE `states` (
 
 INSERT INTO `states` (`id`, `state_name_ar`, `state_name_en`, `city_id`, `country_id`, `created_at`, `updated_at`) VALUES
 (5, 'مدينة نصر', 'nasser city', 1, 1, '2018-10-27 17:41:36', '2018-10-27 17:41:36');
+
+-- --------------------------------------------------------
+
+--
+-- بنية الجدول `trade_marks`
+--
+
+CREATE TABLE `trade_marks` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name_ar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name_en` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- إرجاع أو استيراد بيانات الجدول `trade_marks`
+--
+
+INSERT INTO `trade_marks` (`id`, `name_ar`, `name_en`, `logo`, `created_at`, `updated_at`) VALUES
+(2, 'ابل', 'apple', 'countries/U3j6HyJWr4OUzMtjmrSkgy32If4TCRpHrDehfD4W.jpeg', '2019-01-01 22:24:28', '2019-01-01 22:24:28');
 
 -- --------------------------------------------------------
 
@@ -507,6 +527,12 @@ ALTER TABLE `states`
   ADD KEY `states_country_id_foreign` (`country_id`);
 
 --
+-- Indexes for table `trade_marks`
+--
+ALTER TABLE `trade_marks`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -538,7 +564,7 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `files`
@@ -550,7 +576,7 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `password_resets`
@@ -569,6 +595,12 @@ ALTER TABLE `settings`
 --
 ALTER TABLE `states`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `trade_marks`
+--
+ALTER TABLE `trade_marks`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`

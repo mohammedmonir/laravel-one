@@ -29,6 +29,9 @@ Route::group(['prefix'=>'admin','namespace'=> 'admin'],function(){
             Route::resource('states','StatesController');
             Route::delete('states/distroy/all','StatesController@multi_delete');
 
+            Route::resource('trademarks','TradeMarksController');
+            Route::delete('trademarks/distroy/all','TradeMarksController@multi_delete');
+
             Route::get('/',function(){
                 return view('admin.home');
             });

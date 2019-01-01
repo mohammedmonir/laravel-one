@@ -65,6 +65,9 @@
                     <div class='form-group'>
                             {!!Form::label('icon',trans('admin.icon'))!!}
                             {!!Form::file('icon',['class'=>'form-control'])!!}
+                            @if(!empty($department->icon) and Storage::has($department->icon))
+                                <img src="{{ Storage::url($department->icon)}}" alt="" style='width:20%;height:20%'>
+                            @endif
                     </div>
                    
                     {!!Form::submit(trans('admin.edit'),['class'=>'btn btn-primary'])!!}
