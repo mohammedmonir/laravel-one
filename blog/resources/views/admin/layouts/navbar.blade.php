@@ -152,6 +152,19 @@
         
           </ul>
         </li>
+
+        <li class="treeview {{ active_menu('manufacturers')[0] }}"> 
+          <a href="#">
+            <i class="fa fa-users"></i>
+            {{trans('admin.manufacturers')}} 
+            
+          </a>
+          <ul class="treeview-menu" style='{{ active_menu('manufacturers')[1] }}'>
+            <li class=""><a href="{{url('admin/manufacturers')}}"><i class="fa fa-cube"></i>{{trans('admin.manufacturers')}} </a></li>
+            <li class=""><a href="{{url('admin/manufacturers/create')}}"><i class="fa fa-plus"></i>{{trans('admin.add')}} </a></li>
+        
+          </ul>
+        </li>
       
    
      
