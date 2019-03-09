@@ -166,6 +166,19 @@
           </ul>
         </li>
       
+        <li class="treeview {{ active_menu('shipping')[0] }}"> 
+          <a href="#">
+            <i class="fa fa-truck"></i>
+            {{trans('admin.shipping')}} 
+            
+          </a>
+          <ul class="treeview-menu" style='{{ active_menu('shipping')[1] }}'>
+            <li class=""><a href="{{url('admin/shipping')}}"><i class="fa fa-truck"></i>{{trans('admin.shipping')}} </a></li>
+            <li class=""><a href="{{url('admin/shipping/create')}}"><i class="fa fa-plus"></i>{{trans('admin.add')}} </a></li>
+        
+          </ul>
+        </li>
+      
    
      
       </ul>

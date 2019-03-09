@@ -7,7 +7,7 @@
         <!-- /.box-header -->
         
         <div class="box-body">
-            {!! Form::open(['id'=>'form_data','url'=>url('admin/manufacturers/distroy/all'),'method'=>'delete'])!!} <?php//لازم احمل باكج laravelvcollective ?>
+            {!! Form::open(['id'=>'form_data','url'=>url('admin/shipping/distroy/all'),'method'=>'delete'])!!} <?php//لازم احمل باكج laravelvcollective ?>
                 {!! $dataTable->table(['class'=>'dataTable table table-striped table-hover table-bordered '],true) !!}
             {!! Form::close()!!}
         </div>

@@ -83,6 +83,7 @@ return [
     'ask_delete_dep'         =>'do you want to delete department ',
     'trademarks'         =>'trademarks',
     'manufacturers'         =>'manufacturers',
+    'shipping'         =>'shipping',
     
     
     

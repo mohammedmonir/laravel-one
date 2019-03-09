@@ -97,6 +97,9 @@ return [
     'lat'                   =>'',
     'lng'                   =>'',
     'manufacturers_icon'     =>'شعار المصنع'   ,   
+    'shipping'     =>' شركات الشحن'   ,   
+    'owner_id'     =>'المالك'   ,   
+    'ship_icon'     =>'شعار شركة الشحن'   ,   
 
     
 ];
