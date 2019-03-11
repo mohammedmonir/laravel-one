@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
-use App\DataTables\ManuFactsDatatable;
-use App\model\Manufacturers;
+use App\DataTables\MallsDatatable;
+use App\model\Mall;
 use Illuminate\Http\Request;
 use Storage;
 
-class ManufacturersController extends Controller
+class MallsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ManuFactsDatatable $trade)
+    public function index(MallsDatatable $trade)
     {
-        return $trade->render('admin.manufacturers.index',['title'=>trans('admin.manufacturers')]);
+        return $trade->render('admin.malls.index',['title'=>trans('admin.malls')]);
     }
 
     /**
@@ -26,7 +26,7 @@ class ManufacturersController extends Controller
      */
     public function create()
     {
-        return view('admin.manufacturers.create',['title'=>trans('admin.manufacturers')]);
+        return view('admin.malls.create',['title'=>trans('admin.malls')]);
     }
 
     /**
@@ -55,15 +55,15 @@ class ManufacturersController extends Controller
         if(request()->hasFile('icon')){
             $data['icon']=up()->upload([
                 'file'=>'icon',
-                'path'=>'manufacturers',
+                'path'=>'malls',
                 'upload_type'=>'single',
                 'delete_file' => '',
             ]);
             }   
 
-        Manufacturers::create($data);
+        Mall::create($data);
         session()->flash('success',trans('admin.record_added'));
-        return redirect(url('admin/manufacturers'));
+        return redirect(url('admin/malls'));
     }
 
     /**
@@ -85,9 +85,9 @@ class ManufacturersController extends Controller
      */
     public function edit($id)
     {
-        $manufacturers = Manufacturers::find($id);
+        $malls = Mall::find($id);
         $title = trans('admin.edit');
-        return view('admin.manufacturers.edit',compact('manufacturers','title'));
+        return view('admin.malls.edit',compact('malls','title'));
     }
 
     /**
@@ -118,16 +118,16 @@ class ManufacturersController extends Controller
         if(request()->hasFile('icon')){
             $data['icon']=up()->upload([
                 'file'=>'icon',
-                'path'=>'countries',
+                'path'=>'malls',
                 'upload_type'=>'single',
-                'delete_file'=>Manufacturers::find($id)->logo,
+                'delete_file'=>Mall::find($id)->logo,
             ]);
             }   
 
         
-        Manufacturers::where('id',$id)->update($data);
+        Mall::where('id',$id)->update($data);
         session()->flash('success',trans('admin.updated'));
-        return redirect(url('admin/countries'));
+        return redirect(url('admin/malls'));
     
        
     }
@@ -140,27 +140,27 @@ class ManufacturersController extends Controller
      */
     public function destroy($id)
     {
-        $trademarks= Manufacturers::find($id);
-        Storage::delete($trademarks->logo);
-        $trademarks->delete();
+        $malls= Mall::find($id);
+        Storage::delete($malls->logo);
+        $malls->delete();
         session()->flash('success',trans('admin.deletesuccess'));
-        return redirect(url('admin/countries'));
+        return redirect(url('admin/malls'));
 
     }
     public function multi_delete(){
         if(is_array(request('item'))){
           foreach(request('item') as $id){
-            $manufacturers= Manufacturers::find($id);
-            Storage::delete($manufacturers->logo);
-            $manufacturers->delete();
+            $malls= Mall::find($id);
+            Storage::delete($malls->logo);
+            $malls->delete();
           }
           
         }else{
-            $manufacturers= Manufacturers::find(request('item'));
-            Storage::delete($manufacturers->logo);
-            $manufacturers->delete();
+            $malls= Mall::find(request('item'));
+            Storage::delete($malls->logo);
+            $malls->delete();
         }
         session()->flash('success',trans('admin.deleted_record'));
-        return redirect(url('admin/manufacturers'));
+        return redirect(url('admin/malls'));
     }
 }

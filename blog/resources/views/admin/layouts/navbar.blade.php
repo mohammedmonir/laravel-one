@@ -178,6 +178,20 @@
         
           </ul>
         </li>
+
+
+         <li class="treeview {{ active_menu('malls')[0] }}"> 
+          <a href="#">
+            <i class="fa fa-building"></i>
+            {{trans('admin.malls')}} 
+            
+          </a>
+          <ul class="treeview-menu" style='{{ active_menu('malls')[1] }}'>
+            <li class=""><a href="{{url('admin/malls')}}"><i class="fa fa-building"></i>{{trans('admin.malls')}} </a></li>
+            <li class=""><a href="{{url('admin/malls/create')}}"><i class="fa fa-plus"></i>{{trans('admin.add')}} </a></li>
+        
+          </ul>
+        </li>
       
    
      

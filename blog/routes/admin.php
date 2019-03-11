@@ -35,6 +35,9 @@ Route::group(['prefix'=>'admin','namespace'=> 'admin'],function(){
             Route::resource('manufacturers','ManufacturersController');
             Route::delete('manufacturers/distroy/all','ManufacturersController@multi_delete');
 
+            Route::resource('malls','MallsController');
+            Route::delete('malls/distroy/all','MallsController@multi_delete');
+
             Route::resource('shipping','ShippingController');
             Route::delete('shipping/distroy/all','ShippingController@multi_delete');
 
