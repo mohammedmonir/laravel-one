@@ -194,6 +194,20 @@
         </li>
       
    
+         <li class="treeview {{ active_menu('colors')[0] }}"> 
+          <a href="#">
+            <i class="fa fa-paint-brush"></i>
+            {{trans('admin.colors')}} 
+            
+          </a>
+          <ul class="treeview-menu" style='{{ active_menu('colors')[1] }}'>
+            <li class=""><a href="{{url('admin/colors')}}"><i class="fa fa-paint-brush"></i>{{trans('admin.colors')}} </a></li>
+            <li class=""><a href="{{url('admin/colors/create')}}"><i class="fa fa-plus"></i>{{trans('admin.add')}} </a></li>
+        
+          </ul>
+        </li>
+      
+   
      
       </ul>
     </section>

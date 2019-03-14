@@ -41,6 +41,9 @@ Route::group(['prefix'=>'admin','namespace'=> 'admin'],function(){
             Route::resource('shipping','ShippingController');
             Route::delete('shipping/distroy/all','ShippingController@multi_delete');
 
+            Route::resource('colors','ColorsController');
+            Route::delete('colors/distroy/all','ColorsController@multi_delete');
+
             Route::get('/',function(){
                 return view('admin.home');
             });
